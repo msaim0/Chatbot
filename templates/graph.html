@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Graph Database Visualization</title>
+  <style type="text/css">
+    #mynetwork {
+      width: 100%;
+      height: 600px;
+      border: 1px solid lightgray;
+    }
+  </style>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+  <div id="mynetwork"></div>
+
+  <script type="text/javascript">
+  var nodesData = {{ nodes| safe }};
+    var edgesData = {{ relationships | safe }};
+
+    var nodes = new vis.DataSet(nodesData.map(function(node) {
+      Object.keys(node).forEach(function(key) {
+        if (node[key] instanceof Date) {
+          node[key] = node[key].toISOString();
+        }
+      });
+      return node;
+    }));
+
+    var edges = new vis.DataSet(edgesData.map(function(edge) {
+      Object.keys(edge).forEach(function(key) {
+        if (edge[key] instanceof Date) {
+          edge[key] = edge[key].toISOString();
+        }
+      });
+      return edge;
+    }));
+
+    var container = document.getElementById('mynetwork');
+
+    var data = {
+      nodes: nodes,
+      edges: edges
+    };
+
+    var options = {};
+
+    var network = new vis.Network(container, data, options);
+  </script>
+</body>
+</html>

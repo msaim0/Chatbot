@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/style.css') }}">
+    <title>ChatBot</title>
+</head>
+<body>
+  <header>
+    <h2 class="Chat">ECHOBOT</h2>
+    <nav class="navigation">
+        <button class="btnLogin-popup">Registration</button>
+    </nav>
+  </header>
+  <div class="wrapper">
+    <span class="icon-close">
+        <ion-icon name="close"></ion-icon>
+    </span>
+    <div class="from-box login">
+        <h2>Register</h2>
+        <form  method="post" action="/register1">
+<!--            <h3>Username</h3>-->
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input placeholder="username" type="text" name="username" required >
+
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input placeholder="Email" type="email" name="email" required >
+
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input placeholder="Password" type="password" name="password" required >
+
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">
+                Already have an account?</label>
+            </div>
+            <button type="submit" class="btn" value="login">Register</button>
+            <div class="login-register">
+                <p><a href="/">Login</a></p>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
